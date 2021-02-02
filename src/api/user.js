@@ -22,3 +22,10 @@ export function logout() {
     method: 'post'
   })
 }
+//  2021 0202 --------------------------
+export function Login() {
+  return request({
+    url: '/test/v1/test',
+    method: 'get'
+  })
+}

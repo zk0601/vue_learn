@@ -54,7 +54,8 @@
 
 <script>
 import { validUsername } from '@/utils/validate'
-
+// -- 2021 0202 ---------
+import { Login } from '@/api/user'
 export default {
   name: 'Login',
   data() {
@@ -94,6 +95,9 @@ export default {
       immediate: true
     }
   },
+  mounted() {
+    console.log('this.redirect:', this.redirect)
+  },
   methods: {
     showPwd() {
       if (this.passwordType === 'password') {
@@ -107,13 +111,13 @@ export default {
     },
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
+        console.log('valid:', valid)
         if (valid) {
-          this.loading = true
-          this.$store.dispatch('user/login', this.loginForm).then(() => {
-            this.$router.push({ path: this.redirect || '/' })
-            this.loading = false
-          }).catch(() => {
-            this.loading = false
+          Login().then(res => {
+            console.log('res:', res)
+            if (Number(res.state) === 10001) {
+              this.$router.push({ path: this.redirect || '/' })
+            }
           })
         } else {
           console.log('error submit!!')
@@ -121,6 +125,26 @@ export default {
         }
       })
     }
+    // handleLogin() {
+    //   this.$refs.loginForm.validate(valid => {
+    //     console.log('valid:', valid)
+    //     if (valid) {
+    //       // this.loading = true
+    //       // this.$store.dispatch('user/login', this.loginForm).then((res) => {
+    //       //   console.log('res:', res)
+    //         this.$router.push({ path: this.redirect || '/' })
+    //         // this.$router.push({ name: 'dashboard' })
+    //         console.log('this.$router:', this.$router)
+    //       //   this.loading = false
+    //       // }).catch(() => {
+    //       //   this.loading = false
+    //       // })
+    //     } else {
+    //       console.log('error submit!!')
+    //       return false
+    //     }
+    //   })
+    // }
   }
 }
 </script>
