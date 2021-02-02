@@ -53,6 +53,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import { validUsername } from '@/utils/validate'
 // -- 2021 0202 ---------
 import { Login } from '@/api/user'
