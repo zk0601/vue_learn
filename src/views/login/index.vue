@@ -55,7 +55,7 @@
 <script>
 import { validUsername } from '@/utils/validate'
 // -- 2021 0202 ---------
-import { Login } from "@/api/Login"
+import { Login } from '@/api/user'
 export default {
   name: 'Login',
   data() {
