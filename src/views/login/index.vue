@@ -53,7 +53,6 @@
 </template>
 
 <script>
-/* eslint-disable */
 import { validUsername } from '@/utils/validate'
 // -- 2021 0202 ---------
 import { Login } from '@/api/user'
@@ -115,17 +114,17 @@ export default {
         console.log('valid:', valid)
         if (valid) {
           Login().then(res => {
-            console.log('res:' , res)
+            console.log('res:', res)
             if (Number(res.state) === 10001) {
               this.$router.push({ path: this.redirect || '/' })
-            } 
+            }
           })
         } else {
           console.log('error submit!!')
           return false
         }
       })
-    },
+    }
     // handleLogin() {
     //   this.$refs.loginForm.validate(valid => {
     //     console.log('valid:', valid)

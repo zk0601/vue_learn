@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { MessageBox, Message } from 'element-ui'
+import { Message } from 'element-ui'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
 
@@ -10,7 +10,7 @@ const service = axios.create({
   timeout: 5000 // request timeout
 })
 //  2021 0202
-axios.defaults.baseURL = '/test/'  // test 即上面 vue.config.js 中配置的地址
+axios.defaults.baseURL = '/test/' // test 即上面 vue.config.js 中配置的地址
 
 // request interceptor
 service.interceptors.request.use(
@@ -70,7 +70,7 @@ service.interceptors.response.use(
     //   }
     //   return Promise.reject(new Error(res.message || 'Error'))
     // } else {
-      return res
+    return res
     // }
   },
   error => {
