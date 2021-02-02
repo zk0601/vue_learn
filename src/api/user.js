@@ -25,7 +25,7 @@ export function logout() {
 //  2021 0202 --------------------------
 export function Login() {
   return request({
-    url: '/v1/test',
+    url: '/test/v1/test',
     method: 'get'
   })
 }

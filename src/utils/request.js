@@ -9,6 +9,8 @@ const service = axios.create({
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 5000 // request timeout
 })
+//  2021 0202
+axios.defaults.baseURL = '/test/'  // test 即上面 vue.config.js 中配置的地址
 
 // request interceptor
 service.interceptors.request.use(
