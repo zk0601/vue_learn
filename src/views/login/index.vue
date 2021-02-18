@@ -55,7 +55,7 @@
 <script>
 import { validUsername } from '@/utils/validate'
 // -- 2021 0202 ---------
-import { Login } from '@/api/user'
+import { Login, Logout } from '@/api/user'
 export default {
   name: 'Login',
   data() {
@@ -113,11 +113,19 @@ export default {
       this.$refs.loginForm.validate(valid => {
         console.log('valid:', valid)
         if (valid) {
-          Login().then(res => {
+          let data = new FormData()
+          data.append('a', 123)
+          console.log(data)
+          Login(data).then(res => {
             console.log('res:', res)
             if (Number(res.state) === 10001) {
               this.$router.push({ path: this.redirect || '/' })
             }
+          })
+          let test = { 'a' : 1234 }
+          console.log('test data', data)
+          Logout(test).then(res => {
+            console.log('res:', res)
           })
         } else {
           console.log('error submit!!')
